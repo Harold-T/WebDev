@@ -1,3 +1,4 @@
+
 .header{
 	text-align: center;
 	font-family: Helvetica;
@@ -19,6 +20,26 @@
 	width: 50%;
 }
 
+.image-row{
+	padding: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: justify;
+}
+
+.lsimage{
+	vertical-align: baseline;
+	display: inline-block;
+	max-width: 600px;
+	padding:40px;
+	border: solid;
+}
+
+.stretch{
+	width: 100%;
+	display: inline-block;
+}
+
 body{
 	background-color: white;
 }
@@ -28,6 +49,7 @@ div.data{
 	background-color: #e3e7ed;
 	border: solid;
 	border-color: #bec8d8;
+	width: 50%;
 }
 
 input[type=text]{
