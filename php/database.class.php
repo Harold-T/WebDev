@@ -24,15 +24,47 @@ class Database{
 		$sql_s = $this->connection->prepare("INSERT INTO nametable (firstname, lastname, email) VALUES (?, ?, ?)");
 		
 		//Bind the values to the statement
-		$sql_s->bindValue(1, $fname, PDO::PARAM_STR);
-		$sql_s->bindValue(2, $lname, PDO::PARAM_STR);
-		$sql_s->bindValue(3, $email, PDO::PARAM_STR);
+
+		if($this->validate_input($fname, $lname, $email)){
+			$sql_s->bindValue(1, $fname, PDO::PARAM_STR);
+			$sql_s->bindValue(2, $lname, PDO::PARAM_STR);
+			$sql_s->bindValue(3, $email, PDO::PARAM_STR);
+			$sql_s->execute();
+		}
+
+		else{
+			echo "INVALID INPUT";
+		}
+	
 
 
 		//Execute the SQL statement
-		$sql_s->execute();
 	}
 
+
+	private function validate_input($fname, $lname, $email){
+		/*
+		This function will validate the entered first name,
+		last name and email.
+		*/
+
+		//Validity of all input
+		$valid_input = True;
+
+		//Validate first name and last name.
+		//fname and lname should only allow letters and whitespace
+		$valid_fname = preg_match("/^[a-zA-Z ]*$/", $fname);
+		$valid_lname = preg_match("/^[a-zA-Z ]*$/", $lname);
+
+		//Validate the entered email
+		$valid_email = filter_var($email, FILTER_VALIDATE_EMAIL);
+
+		if(!$valid_fname or !$valid_lname or !$valid_email){
+			$valid_input = False;
+		}
+
+		return $valid_input;
+	}
 }
 
 
