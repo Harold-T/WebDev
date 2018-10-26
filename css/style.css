@@ -49,7 +49,7 @@ div.data{
 	background-color: #e3e7ed;
 	border: solid;
 	border-color: #bec8d8;
-	width: 50%;
+	text-align: center
 }
 
 input[type=text]{
