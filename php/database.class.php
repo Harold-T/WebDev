@@ -21,12 +21,12 @@ class Database{
 	public function insert_data($fname, $lname, $email){
 
 		//Prepare the SQL statement
-		$sql_s = $this->connection->prepare("INSERT INTO nametable (firstname, lastname, email) VALUES (:firstname, :lastname, :email)");
-
+		$sql_s = $this->connection->prepare("INSERT INTO nametable (firstname, lastname, email) VALUES (?, ?, ?)");
+		
 		//Bind the values to the statement
-		$sql_s->bindValue(':firstname', $fname);
-		$sql_s->bindValue(':lastname', $lname);
-		$sql_s->bindValue(':email', $email);
+		$sql_s->bindValue(1, $fname, PDO::PARAM_STR);
+		$sql_s->bindValue(2, $lname, PDO::PARAM_STR);
+		$sql_s->bindValue(3, $email, PDO::PARAM_STR);
 
 
 		//Execute the SQL statement
