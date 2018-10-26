@@ -30,10 +30,12 @@ class Database{
 			$sql_s->bindValue(2, $lname, PDO::PARAM_STR);
 			$sql_s->bindValue(3, $email, PDO::PARAM_STR);
 			$sql_s->execute();
+			return true;
 		}
 
 		else{
 			echo "INVALID INPUT";
+			return false;
 		}
 	
 
