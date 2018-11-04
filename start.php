@@ -17,6 +17,7 @@ if(isset($_POST['submit'])){
 
 	elseif ($success) {
 		header("Location: index.php?success=true");
+		exit;
 	}
 }
 
