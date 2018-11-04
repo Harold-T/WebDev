@@ -37,10 +37,6 @@ class Database{
 			echo "INVALID INPUT";
 			return false;
 		}
-	
-
-
-		//Execute the SQL statement
 	}
 
 

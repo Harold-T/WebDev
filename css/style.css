@@ -10,6 +10,7 @@
 	background-color: #f7f7f7;
 	overflow: hidden;
 	padding: 12px;
+	margin-bottom: 30px;
 }
 
 .linkbar a{
@@ -26,11 +27,8 @@ body{
 }
 
 
-div.data{
-	background-color: #e3e7ed;
-	border: solid;
-	border-width: 50%;
-	border-color: #bec8d8;
+div.data{;
+	border-width: 1;
 	text-align: center
 }
 
