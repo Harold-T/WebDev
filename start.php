@@ -14,9 +14,13 @@ if(isset($_POST['submit'])){
 		header("Location: index.php?error=true");
 		exit;
 	}
+
+	elseif ($success) {
+		header("Location: index.php?success=true");
+	}
 }
 
 else{
-	echo "SUBMIT DATA WITH THE BUTTON NERD";
+	echo "You must submit data by using the form on the front page";
 }
 ?>
