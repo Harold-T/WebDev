@@ -39,6 +39,16 @@ class Database{
 		}
 	}
 
+	public function retrieve_data(){
+		$sql_s = $this->connection->prepare("SELECT firstname, lastname from nametable");
+		$sql_s->execute();
+		$result = $sql_s->setFetchMode(PDO::FETCH_ASSOC);
+
+		while($r = $sql_s->fetch()){
+			echo sprintf('%s ', $r['firstname']);
+			echo sprintf('%s <br/>', $r['lastname']);
+		}
+	}
 
 	private function validate_input($fname, $lname, $email){
 		/*
