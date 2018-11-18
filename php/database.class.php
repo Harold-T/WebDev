@@ -28,13 +28,45 @@ class Database{
 		if($this->validate_input($fname, $lname, $email)){
 			$sql_s->bindValue(1, $fname, PDO::PARAM_STR);
 			$sql_s->bindValue(2, $lname, PDO::PARAM_STR);
-			$sql_s->bindValue(3, $email, PDO::PARAM_STR);
-			$sql_s->execute();
-			return true;
+			
+
+			$non_duplicate = $this->check_entry($email);
+
+			if($non_duplicate){
+				$sql_s->bindValue(3, $email, PDO::PARAM_STR);
+				$sql_s->execute();
+				return true;
+			}
+			#if($this->check_entry($email)){
+			#	$sql_s->bindValue(3, $email, PDO::PARAM_STR);
+			#}
+			
+			else{
+				return false;
+			}
 		}
 
 		else{
 			echo "INVALID INPUT";
+			return false;
+		}
+	}
+
+	private function check_entry($user_email){
+		/* Checks whether an email has already
+		been entered into the database.  Returns
+		true if it is not already entered.*/
+
+		$sql_s = $this->connection->prepare("SELECT email from nametable WHERE email = ?");
+		$sql_s->bindValue(1, $user_email, PDO::PARAM_STR);
+		$sql_s->execute();
+		$row = $sql_s->fetch(PDO::FETCH_ASSOC);
+		#echo $row[0];
+		if(!$row){
+			return true;
+		}
+
+		else{
 			return false;
 		}
 	}
@@ -46,8 +78,6 @@ class Database{
 
 		echo "<table><tr><th>NAME</th><th>LASTNAME</th><tr>";
 		while($r = $sql_s->fetch()){
-			#echo sprintf('%s ', $r['firstname']);
-			#echo sprintf('%s <br/>', $r['lastname']);
 			echo "<tr><td>".$r['firstname']."</td><td>".$r["lastname"]." "."</td></tr>";
 			
 		}
