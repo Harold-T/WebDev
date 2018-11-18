@@ -61,4 +61,7 @@ img{
 	border-width: 4px;
 }
 
+table, th, td{
+	border: 1px solid black;
+}
 

@@ -44,10 +44,14 @@ class Database{
 		$sql_s->execute();
 		$result = $sql_s->setFetchMode(PDO::FETCH_ASSOC);
 
+		echo "<table><tr><th>NAME</th><th>LASTNAME</th><tr>";
 		while($r = $sql_s->fetch()){
-			echo sprintf('%s ', $r['firstname']);
-			echo sprintf('%s <br/>', $r['lastname']);
+			#echo sprintf('%s ', $r['firstname']);
+			#echo sprintf('%s <br/>', $r['lastname']);
+			echo "<tr><td>".$r['firstname']."</td><td>".$r["lastname"]." "."</td></tr>";
+			
 		}
+		echo "</table>";
 	}
 
 	private function validate_input($fname, $lname, $email){
