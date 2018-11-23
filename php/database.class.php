@@ -37,9 +37,6 @@ class Database{
 				$sql_s->execute();
 				return true;
 			}
-			#if($this->check_entry($email)){
-			#	$sql_s->bindValue(3, $email, PDO::PARAM_STR);
-			#}
 			
 			else{
 				return false;
@@ -61,7 +58,7 @@ class Database{
 		$sql_s->bindValue(1, $user_email, PDO::PARAM_STR);
 		$sql_s->execute();
 		$row = $sql_s->fetch(PDO::FETCH_ASSOC);
-		#echo $row[0];
+		
 		if(!$row){
 			return true;
 		}
